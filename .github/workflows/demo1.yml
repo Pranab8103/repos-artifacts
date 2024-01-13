@@ -28,6 +28,7 @@ jobs:
       - name: Upload artifacts 
         uses: actions/upload-artifact@v3
         with:
+          #give name of artifacts 
           name: dist-files-path
           path: |
             dist
@@ -37,5 +38,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      #download the artifacts 
+      - name: Get build artifacts 
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files-path
       - name: Deploy
         run: echo "Deploying..."
